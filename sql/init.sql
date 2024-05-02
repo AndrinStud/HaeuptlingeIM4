@@ -30,8 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Vehicles` (
   `id` char(36) NOT NULL,
-  `name` int(11) NOT NULL,
+  `name` TEXT NOT NULL,
   `available` int(11) NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp(),
   `xCoordinates` float NOT NULL,
   `yCoordinates` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -51,4 +52,12 @@ ALTER TABLE `Vehicles`
   ADD PRIMARY KEY (`id`);
  
 
-INSERT INTO `Vehicles` (id, name, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18ec','some vehicle' , 1, 47.5109, 8.696504);
+INSERT INTO `Vehicles` (id, `name`, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18ec','some vehicle', 1, 47.5109, 8.696504);
+
+INSERT INTO `Vehicles` (id, name, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18dr',' vehicle' , 2, 47.5119, 8.696510);	
+
+INSERT INTO `Vehicles` (id, name, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18er',' vehicle' , 3, 47.5129, 8.696514);
+
+INSERT INTO `Vehicles` (id, name, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18fr',' vehicle' , 4, 47.5139, 8.696518);
+
+INSERT INTO `Vehicles` (id, name, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18gr',' vehicle' , 5, 47.5149, 8.696522);
