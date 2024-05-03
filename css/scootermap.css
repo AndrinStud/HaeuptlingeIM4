@@ -1,0 +1,25 @@
+.slider-ticks {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.tick-label {
+    position: absolute;
+    bottom: -30px;
+    width: calc(100% / 24);
+    text-align: center;
+    font-size: 12px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+#slider {
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+}
+
