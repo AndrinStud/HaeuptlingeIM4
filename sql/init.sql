@@ -49,19 +49,21 @@ INSERT INTO Providers (id, text_id, full_name) VALUES ('36192988-3a8a-4a9d-982c-
 --
 CREATE TABLE Vehicles (
   id char(36) NOT NULL,
+  time datetime NOT NULL,
   provider_id char(36) NOT NULL,
   available int(11) NOT NULL,
-  time datetime NOT NULL DEFAULT current_timestamp(),
   xCoordinates float NOT NULL,
-  yCoordinates float NOT NULL
+  yCoordinates float NOT NULL,
+  PRIMARY KEY (id, time),
+  FOREIGN KEY (provider_id) REFERENCES Providers(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE Vehicles
-  ADD PRIMARY KEY (id),
-  ADD FOREIGN KEY (provider_id) REFERENCES Providers(id);
 
-INSERT INTO Vehicles (id, provider_id, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18ec','3c76342c-f35e-4ec6-bb37-dd0384726ee0', 1, 47.5109, 8.696504);
-INSERT INTO Vehicles (id, provider_id, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18dr','a6cf8b5f-ced8-4638-8168-c10db85ebe14' , 1, 47.5119, 8.696510);	
-INSERT INTO Vehicles (id, provider_id, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18er','93f241a8-c89f-4c0f-984e-8705bd435189' , 0, 47.5129, 8.696514);
-INSERT INTO Vehicles (id, provider_id, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18fr','3c76342c-f35e-4ec6-bb37-dd0384726ee0' , 2, 47.5139, 8.696518);
-INSERT INTO Vehicles (id, provider_id, available, xCoordinates, yCoordinates) VALUES ('26ba76b4-2053-4fa9-a3ee-a619bcfb18gr','1eb2096e-6d2c-4172-993c-9ea52d1b7a0d' , 1, 47.5149, 8.696522);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('103a48c7-4951-4cfe-983a-acb95845895d', '2024-05-13 17:30:00' ,'a6cf8b5f-ced8-4638-8168-c10db85ebe14', 1, 47.498505, 8.743115);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('d2479fa5-618e-4971-8d04-f685326fb419', '2024-05-13 17:30:00' ,'93f241a8-c89f-4c0f-984e-8705bd435189', 1, 47.498826, 8.735857);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('133d7630-b956-4aa4-bbf5-8b6dd6340946', '2024-05-13 17:30:00' ,'3c76342c-f35e-4ec6-bb37-dd0384726ee0', 0, 47.49399, 8.736313);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('5c6521a9-fcd9-45d8-b443-215ad1fbdb66', '2024-05-13 17:30:00' ,'1eb2096e-6d2c-4172-993c-9ea52d1b7a0d', 2, 47.498645, 8.731882);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('103a48c7-4951-4cfe-983a-acb95845895d', '2024-05-13 17:45:00' ,'a6cf8b5f-ced8-4638-8168-c10db85ebe14', 1, 47.497505, 8.742115);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('d2479fa5-618e-4971-8d04-f685326fb419', '2024-05-13 17:45:00' ,'93f241a8-c89f-4c0f-984e-8705bd435189', 1, 47.497826, 8.736857);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('133d7630-b956-4aa4-bbf5-8b6dd6340946', '2024-05-13 17:45:00' ,'3c76342c-f35e-4ec6-bb37-dd0384726ee0', 0, 47.49499, 8.737313);
+INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('5c6521a9-fcd9-45d8-b443-215ad1fbdb66', '2024-05-13 17:45:00' ,'1eb2096e-6d2c-4172-993c-9ea52d1b7a0d', 2, 47.499645, 8.730882);

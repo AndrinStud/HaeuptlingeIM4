@@ -12,18 +12,20 @@ function getData ($offset) {
     return $dataSet;
 }
 
-echo '<script>console.log("Start gathering data from api");</script>';
-
-$data = getData(0);
-$dataLength = count($data);
-$fullDataLength = $dataLength;
-while ($dataLength == 50) {
-    $newData = getData($fullDataLength);
-    $dataLength = count($newData);
-    $data = array_merge($data, $newData);
-    $fullDataLength += $dataLength;
+function getFinalData(){
+    echo '<script>console.log("Starting an API Call");</script>';
+    $data = getData(0);
+    $dataLength = count($data);
+    $fullDataLength = $dataLength;
+    while ($dataLength == 50) {
+        $newData = getData($fullDataLength);
+        $dataLength = count($newData);
+        $data = array_merge($data, $newData);
+        $fullDataLength += $dataLength;
+    }
+    echo '<script>console.log("Finished API Call");</script>';
+    return $data;
 }
 
-echo '<script>console.log("Finished gathering data: " + ' . count($data) . ' + " entries");</script>';
 echo "Extract<br/>";
 ?>
