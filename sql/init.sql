@@ -45,7 +45,7 @@ INSERT INTO Providers (id, text_id, full_name) VALUES ('36192988-3a8a-4a9d-982c-
 
 
 --
--- Erstelle und fülle Tabelle Vehicles
+-- Erstelle Tabelle Vehicles
 --
 CREATE TABLE Vehicles (
   id char(36) NOT NULL,
@@ -59,6 +59,10 @@ CREATE TABLE Vehicles (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+--
+-- Beispieldaten für Tabelle Vehicles
+--
+/*
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('103a48c7-4951-4cfe-983a-acb95845895d', '2024-05-13 17:30:00' ,'a6cf8b5f-ced8-4638-8168-c10db85ebe14', 1, 47.498505, 8.743115);
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('d2479fa5-618e-4971-8d04-f685326fb419', '2024-05-13 17:30:00' ,'93f241a8-c89f-4c0f-984e-8705bd435189', 1, 47.498826, 8.735857);
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('133d7630-b956-4aa4-bbf5-8b6dd6340946', '2024-05-13 17:30:00' ,'3c76342c-f35e-4ec6-bb37-dd0384726ee0', 0, 47.49399, 8.736313);
@@ -67,3 +71,4 @@ INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinat
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('d2479fa5-618e-4971-8d04-f685326fb419', '2024-05-13 17:45:00' ,'93f241a8-c89f-4c0f-984e-8705bd435189', 1, 47.497826, 8.736857);
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('133d7630-b956-4aa4-bbf5-8b6dd6340946', '2024-05-13 17:45:00' ,'3c76342c-f35e-4ec6-bb37-dd0384726ee0', 0, 47.49499, 8.737313);
 INSERT INTO Vehicles (id, time, provider_id, available, xCoordinates, yCoordinates) VALUES ('5c6521a9-fcd9-45d8-b443-215ad1fbdb66', '2024-05-13 17:45:00' ,'1eb2096e-6d2c-4172-993c-9ea52d1b7a0d', 2, 47.499645, 8.730882);
+*/
