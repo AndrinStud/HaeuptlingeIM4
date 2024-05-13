@@ -1,6 +1,8 @@
 <?php
 include 'extract.php';
 
+echo "Transform<br/>";
+
 $freeFloatingIndex = 0;
 
 foreach ($data as $item) {
@@ -22,9 +24,9 @@ foreach ($data as $item) {
 
     echo $pickupType . "<br/><br/>";
     
-    /*if ($item['attributes']['pickup_type'] != "free_floating"){
+    if ($item['attributes']['pickup_type'] != "free_floating"){
         continue;
-    }*/
+    }
     
     $freeFloatingIndex++;
     /*$temperature_2m = $item['current']['temperature_2m'];
@@ -43,6 +45,4 @@ foreach ($data as $item) {
 }
 
 echo "Free floating vehicles: " . $freeFloatingIndex . "<br/>";
-
-echo "Transform<br/>";
 ?>
