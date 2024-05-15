@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once '../backend/config.php';
 
 try {
     // Create a new PDO instance

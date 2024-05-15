@@ -19,13 +19,6 @@
             height: 60vh;
         }
 
-        #scooter-usage-chart {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-        }
-
         #slider-container {
             text-align: center;
             margin-bottom: 20px;
@@ -59,11 +52,6 @@
             width: 100%;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Scooter Map</h1>
@@ -86,20 +74,41 @@
     <!-- Chart -->
     <canvas id="scooter-usage-chart" width="800" height="400"></canvas>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Function to fetch data from the PHP backend and update heatmap
         function loadData(date, time) {
+            var dateTime = date + ' ' + time + ':00';
+            console.log('Fetching data for:', dateTime); // Added console.log to check date and time
             $.ajax({
-                url: '/php/endpoints/getall.php', // Absolute path to the PHP file
+                url: '/php/endpoints/GetAll.php',
                 method: 'GET',
                 dataType: 'json',
+                data: { time: dateTime },
                 success: function(response) {
-                    // Process the response data
-                    var data = response.map(function(item) {
-                        return [parseFloat(item.xCoordinates), parseFloat(item.yCoordinates)];
-                    });
-                    // Update heatmap with new data
-                    updateHeatmap(data);
+                    // Process the response data if available
+                    if (response.length > 0) {
+                        // Filter points based on selected date and time
+                        var selectedDateTime = new Date(dateTime).getTime();
+                        var data = response.filter(function(item) {
+                            var pointDateTime = new Date(item.time).getTime();
+                            return pointDateTime === selectedDateTime;
+                        }).map(function(item) {
+                            return [parseFloat(item.xCoordinates), parseFloat(item.yCoordinates)];
+                        });
+                        // Clear existing heatmap data
+                        heat.setLatLngs([]);
+                        // Update heatmap with new data
+                        heat.setLatLngs(data);
+                    } else {
+                        // No data available for the selected date and time
+                        // Clear existing heatmap data
+                        heat.setLatLngs([]);
+                    }
                 }
             });
         }
@@ -107,7 +116,7 @@
         // Function to fetch scooter usage data and update the line chart
         function loadScooterUsageData(date) {
             $.ajax({
-                url: '/php/endpoints/getusage.php', // Modify the URL according to your backend endpoint
+                url: '/php/endpoints/GetUsage.php', // Modify the URL according to your backend endpoint
                 method: 'GET',
                 dataType: 'json',
                 data: { date: date },
@@ -131,14 +140,7 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        var heat = L.heatLayer([], { radius: 50 }).addTo(map);
-
-        // Function to update the heatmap with new data
-        function updateHeatmap(data) {
-            heat.setLatLngs(data);
-            // Set heatmap options (can adjust color gradient, radius, etc. here)
-            heat.options.gradient = {0.4: 'blue', 0.65: 'lime', 1: 'red'};
-        }
+        var heat = L.heatLayer([], { radius: 20 }).addTo(map);
 
         // Function to update the line chart with new data
         function updateScooterUsageChart(labels, data) {
@@ -178,15 +180,16 @@
             $("#datepicker").datepicker({
                 dateFormat: 'yy-mm-dd',
                 onSelect: function(dateText) {
-                    // Trigger data loading based on the selected date
-                    loadData(dateText, 0); // Load data for the selected date and initial time
+                    // Trigger data loading based on the selected date and time
+                    var selectedTime = $('#slider').val(); // Get selected time from slider
+                    loadData(dateText, selectedTime); // Load data for the selected date and time
                     loadScooterUsageData(dateText); // Load scooter usage data for the selected date
                 }
             });
 
             var sliderTicks = document.getElementById('slider-ticks');
             var slider = document.getElementById('slider');
-            var timeLabels = ["01:00", "01:15", "01:30", "01:45", "02:00", "02:15", "02:30", "02:45", "03:00", "03:15", "03:30", "03:45", "04:00", "04:15", "04:30", "04:45", "05:00", "05:15", "05:30", "05:45", "06:00", "06:15", "06:30", "06:45", "07:00", "07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45", "22:00", "22:15", "22:30", "22:45", "23:00", "23:15", "23:30", "23:45", "24:00"];
+            var timeLabels = ["00:00", "00:15", "00:30", "00:45", "01:00", "01:15", "01:30", "01:45", "02:00", "02:15", "02:30", "02:45", "03:00", "03:15", "03:30", "03:45", "04:00", "04:15", "04:30", "04:45", "05:00", "05:15", "05:30", "05:45", "06:00", "06:15", "06:30", "06:45", "07:00", "07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45", "22:00", "22:15", "22:30", "22:45", "23:00", "23:15", "23:30", "23:45"];
 
             for (var i = 0; i < timeLabels.length; i++) {
                 var tickLabel = document.createElement('div');
@@ -203,17 +206,19 @@
                 for (var i = 0; i < tickLabels.length; i++) {
                     if (i === index) {
                         tickLabels[i].style.display = 'block';
+                        var selectedDate = $('#datepicker').datepicker('getDate').toISOString().slice(0, 10); // Get selected date from datepicker
+                        var selectedTime = timeLabels[i]; // Get selected time from slider
+                        loadData(selectedDate, selectedTime); // Load data for the selected date and time
                     } else {
                         tickLabels[i].style.display = 'none';
                     }
                 }
-                // Do something with the selected time
             });
         });
 
         // Initial load of data based on the current date and time
         var currentDate = new Date().toISOString().slice(0, 10);
-        loadData(currentDate, 0);
+        loadData(currentDate, "00:00"); // Initial load for the start of the day
         loadScooterUsageData(currentDate);
     </script>
 </body>
