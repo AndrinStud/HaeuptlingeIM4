@@ -87,7 +87,7 @@
     </style>
 </head>
 <body>
-    <h1>Scooter Map</h1>
+    <h1>Trotti-Tracker</h1>
 
     <!-- Scooter Availability Chart -->
     <div id="scooterAvailabilityChartContainer">
