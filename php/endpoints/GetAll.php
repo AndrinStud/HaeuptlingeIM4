@@ -6,7 +6,7 @@ try {
     $pdo = new PDO($dsn, $db_user, $db_pass, $options);
     
     // Prepare the SQL statement
-    $stmt = $pdo->prepare("SELECT id, time, xCoordinates, yCoordinates FROM Vehicles");
+    $stmt = $pdo->prepare("SELECT id, time, xCoordinates, yCoordinates, available FROM Vehicles");
     
     // Execute the statement
     $stmt->execute();
