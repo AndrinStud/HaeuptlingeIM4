@@ -8,98 +8,28 @@
     <link rel="stylesheet" href="../../css/scootermap.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        #map-container {
-            position: relative;
-            margin-bottom: 40px;
-            width: 100%;
-            clear: both;
-        }
-
-        #map {
-            width: 100%;
-            height: 60vh;
-        }
-
-        #datepicker-buttons {
-    position: relative;
-    bottom: -20px; /* Adjust this value to move the buttons further down */
-    text-align: center;
-    z-index: 999; /* Add a higher z-index */
-}
-
-.date-button {
-    display: inline-block;
-    width: calc(100% / 8); /* Divide by the number of buttons */
-    text-align: center;
-}
-
-        .slider-ticks {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 40px; /* Adjust this value to create space for the buttons */
-    padding-top: 40px;
-}
-
-        .tick-label {
-            position: absolute;
-            bottom: 10px;
-            width: calc(90% / 24);
-            text-align: center;
-            font-size: 12px;
-            transform: translateX(-50%) rotate(0deg);
-            left: calc(-50% + 20px);
-            display: none;
-        }
-
-        #slider {
-            width: 100%;
-        }
-
-        /* Adjustments for the charts */
-        #scooterAvailabilityChartContainer,
-        #stationUsageChartContainer {
-            width: 45%;
-            float: left;
-            margin-right: 5%;
-        }
-
-        #stationUsageChartContainer {
-            float: right;
-            margin-right: 0;
-        }
-        #info-tile {
-            width: 200px;
-            position: relative;
-            top: 50%;
-            left: 20px; /* Adjust this value to position it as needed */
-            transform: translateY(-50%);
-            background-color: white;
-            color: black;
-            padding: 10px 10px 20px 10px;
-            border: 1px solid black;
-            display: none;
-        }
-    </style>
-    </style>
 </head>
 <body>
-    <h1>Trotti-Tracker</h1>
+    <article class="start">
+        <h1 class="title">Trotti-Tracker</h1>
+        <p>Willst du wissen wann die Mobility Fahrzeuge sich wo aufhalten?</p>
+        <br />
+        <p>Komm nie wieder zu spät. Steh nie wieder vor einer leeren E-Bike-Station. Finde sofort ein Trotti, wenn du es brauchst.</p>
+    </article>
 
-    <!-- Scooter Availability Chart -->
-    <div id="scooterAvailabilityChartContainer">
-        <canvas id="scooterAvailabilityChart"></canvas>
-        <h2 style="text-align: center;">  </h2>
-    </div>
+    <article id="charts">
+        <!-- Scooter Availability Chart -->
+        <div id="scooterAvailabilityChartContainer">
+            <canvas id="scooterAvailabilityChart"></canvas>
+            <h2 style="text-align: center;">  </h2>
+        </div>
 
-    <!-- Station Usage Chart -->
-    <div id="stationUsageChartContainer">
-        <canvas id="stationUsageChart"></canvas>
-        <h2 style="text-align: center;">  </h2>
-    </div>
+        <!-- Station Usage Chart -->
+        <div id="stationUsageChartContainer">
+            <canvas id="stationUsageChart"></canvas>
+            <h2 style="text-align: center;">  </h2>
+        </div>
+    </article>
 
     <!-- Datepicker buttons -->
 
