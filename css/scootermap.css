@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
+
+body > * {
+    width: 80%;
+}
+
+body, .notInsideContainer {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Lakki Reddy', serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 9vmin;
+}
+
+.title {
+    text-align: center;
+}
+
+#map-container {
+    position: relative;
+    margin-bottom: 40px;
+    clear: both;
+}
+
+#map {
+    width: 100%;
+    height: 60vh;
+}
+
+#datepicker-buttons {
+position: relative;
+bottom: -20px; /* Adjust this value to move the buttons further down */
+text-align: center;
+z-index: 999; /* Add a higher z-index */
+}
+
+.date-button {
+display: inline-block;
+width: calc(100% / 8); /* Divide by the number of buttons */
+text-align: center;
+}
+
+.slider-ticks {
+position: relative;
+width: 90%;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+padding-bottom: 40px; /* Adjust this value to create space for the buttons */
+padding-top: 40px;
+}
+
+.tick-label {
+    position: absolute;
+    bottom: 10px;
+    width: calc(90% / 24);
+    text-align: center;
+    font-size: 12px;
+    transform: translateX(-50%) rotate(0deg);
+    left: calc(-50% + 20px);
+    display: none;
+}
+
+#slider {
+    width: 100%;
+    accent-color: red;
+}
+
+#info-tile {
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    padding: 10px 10px 20px 10px;
+    border: 1px solid black;
+    display: none;
+}
+
+#charts {
+    display: flex;
+    flex-direction: column;
+}
+
+#scooterAvailabilityChartContainer, #stationUsageChartContainer{
+    width: 100%;
+}
+
+.start {
+    margin-bottom: 8vmin;
+}
+
+@media screen and (min-width: 600px) {
+    #charts {
+        flex-direction: row;
+    }
+
+    #scooterAvailabilityChartContainer, #stationUsageChartContainer {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 900px){
+    body > * {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    body > * {
+        width: 60%;
+    }
+}
