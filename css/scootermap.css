@@ -47,6 +47,13 @@ z-index: 999; /* Add a higher z-index */
 display: inline-block;
 width: calc(100% / 8); /* Divide by the number of buttons */
 text-align: center;
+border: none;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.date-button.active {
+    background-color: red;
 }
 
 .slider-ticks {
