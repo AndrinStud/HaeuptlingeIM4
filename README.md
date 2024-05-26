@@ -1,5 +1,5 @@
 # Dokumentation
-**Myriam Häubi, Dea Caviziel, Andrin Schärli**
+Von **Myriam Häubi, Dea Caviziel, Andrin Schärli**:
 Zu Beginn des Projektes haben wir uns für die API von Shared Mobility entschieden. Dort werden die Scooter, Mobility Cars und Fahrräder angezeigt. Dabei werden verschiedene Anbieter angezapft. Die Fahrzeuge werden mit Koordinaten und Verfügbarkeit angezeigt. Dies wollten wir nutzen, um darzustellen, wie sich die Fahrzeuge innerhalb einer gewählten Zone (Winterthur) bewegen. Dadurch soll ein Besucher der Website sehen, zu welchen Zeiten die Fahrzeuge vermehrt wo sind und sich vielleicht ein Schema bildet. Auch soll erkannt wie die Nutzung der Trottis über den Tag hinweg aussieht und wie ausgelastet die Stationen sind.
 
 ## Learnings:
