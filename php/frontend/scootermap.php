@@ -11,8 +11,8 @@
 </head>
 <body>
     <article class="start">
-        <h1 class="title">Trotti-Tracker</h1>
-        <p>Willst du wissen wann die Mobility Fahrzeuge sich wo aufhalten?</p>
+    <h1 class="title title-background">Trotti-Tracker</h1>
+        <p class="abstand_top">Willst du wissen wann die Mobility Fahrzeuge sich wo aufhalten?</p>
         <br />
         <p>Komm nie wieder zu spät. Steh nie wieder vor einer leeren E-Bike-Station. Finde sofort ein Trotti, wenn du es brauchst.</p>
     </article>
