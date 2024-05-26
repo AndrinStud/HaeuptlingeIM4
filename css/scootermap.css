@@ -19,8 +19,12 @@ h1 {
     font-weight: 400;
     font-style: normal;
     font-size: 9vmin;
+    color: black;
 }
+p {
 
+    color: black;
+}
 .title {
     text-align: center;
 }
@@ -101,13 +105,49 @@ padding-top: 40px;
 }
 
 .start {
-    margin-bottom: 8vmin;
-}
+    background-image: url('../Images/Scooter.png'); /* Default to Scooter.png for small screens */
 
+    background-size: 120%;
+    background-position: center;
+    color: white; /* Ensure the text is readable against the background image */
+    margin-top: 0px; /* Add some padding if needed */
+    text-align: center; /* Center the text */
+    padding-bottom: 8vmin;
+    width: 100%;
+}
+.title-background {
+    padding-top: 50px;
+
+}
+.abstand_top {
+    padding-top: 300px;
+}
+@media (max-width: 400px) {
+    .title-background {
+        padding-top: 100px;
+    
+    }
+}
+@media (max-width: 501px) {
+    .abstand_top {
+        padding-top: 240px;
+    }
+}
+@media (min-width: 601px) {
+    .start {
+        background-image: url('../Images/Street.png');
+        
+    }
+}
+    
 @media screen and (min-width: 600px) {
     #charts {
         flex-direction: row;
     }
+
+
+ @media screen and (max-width: 600px) {
+    background-image-size: 200%;
 
     #scooterAvailabilityChartContainer, #stationUsageChartContainer {
         width: 50%;
