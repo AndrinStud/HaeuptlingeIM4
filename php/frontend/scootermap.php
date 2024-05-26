@@ -34,13 +34,13 @@
     <!-- Datepicker buttons -->
 
     <div id="datepicker-buttons">
-    <button class="date-button" data-date="2024-05-06" style="--button-index: 1;">Mo</button>
-    <button class="date-button" data-date="2024-05-07" style="--button-index: 2;">Thu</button>
-    <button class="date-button" data-date="2024-05-08" style="--button-index: 3;">Wed</button>
-    <button class="date-button" data-date="2024-05-09" style="--button-index: 4;">Thur</button>
-    <button class="date-button" data-date="2024-05-10" style="--button-index: 5;">Fri</button>
-    <button class="date-button" data-date="2024-05-11" style="--button-index: 6;">Sat</button>
-    <button class="date-button" data-date="2024-05-12" style="--button-index: 7;">Sun</button>
+    <button class="date-button" data-date="2024-05-06" style="--button-index: 1;">MO</button>
+    <button class="date-button" data-date="2024-05-07" style="--button-index: 2;">DI</button>
+    <button class="date-button" data-date="2024-05-08" style="--button-index: 3;">MI</button>
+    <button class="date-button" data-date="2024-05-09" style="--button-index: 4;">DO</button>
+    <button class="date-button" data-date="2024-05-10" style="--button-index: 5;">FR</button>
+    <button class="date-button" data-date="2024-05-11" style="--button-index: 6;">SA</button>
+    <button class="date-button" data-date="2024-05-12" style="--button-index: 7;">SO</button>
 </div>
 
     <!-- Slider container -->
